@@ -4,7 +4,7 @@ import 'package:shop/models/products_model.dart';
 
 class GetAllCategoriesService{
   Future<List<ProductsModel>> getCategory({required String catName}) async{
-    List<dynamic> data = await HttpHelper().get(url: GETCATEGORIES+catName);
+    List<dynamic> data = await HttpHelper().get(url: (ApiConstance.GETCATEGORIES+catName));
     List<ProductsModel>  categoriesList= [];
     for(int i = 0 ; i<data.length; i++){
       categoriesList.add(ProductsModel.fromJson(data[i]));

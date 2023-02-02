@@ -6,7 +6,7 @@ import 'package:shop/models/products_model.dart';
 
 class AllProductsService{
   Future<List<ProductsModel>> getAllProducts() async{
-    List<dynamic> data = await HttpHelper().get(url: PRODUCTS);
+    List<dynamic> data = await HttpHelper().get(url: ApiConstance.PRODUCTS);
     List<ProductsModel>  productList= [];
     for(int i = 0 ; i<data.length; i++){
       productList.add(ProductsModel.fromJson(data[i]));

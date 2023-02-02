@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:shop/core/App_Strings/app_strings_screens.dart';
 
 class HttpHelper {
   Future<dynamic> get({required String url,String? token}) async {
@@ -11,7 +12,7 @@ class HttpHelper {
     if (response.statusCode == 200) {
       return jsonDecode(response.body);
     } else {
-      throw Exception('error in status code ${response.statusCode} with body${jsonDecode(response.body)}');
+      throw Exception('${AppString.apiError}${response.statusCode} with body${jsonDecode(response.body)}');
     }
   }
 
@@ -31,7 +32,7 @@ class HttpHelper {
       Map<String,dynamic> data =  jsonDecode(response.body);
       return data;
     } else {
-      throw Exception('error in status code ${response.statusCode} with body${jsonDecode(response.body)}');
+      throw Exception('${AppString.apiError} ${response.statusCode} with body${jsonDecode(response.body)}');
     }
   }
   Future<dynamic> put({
@@ -46,14 +47,16 @@ class HttpHelper {
     if (token != null) {
       headers.addAll({'Authorization': "Bearer$token"});
     }
+    print('url = $url body= $body token= $token ');
     http.Response response =
         await http.post(Uri.parse(url), body: body, headers: headers);
     if (response.statusCode == 200) {
       // return jsonDecode(response.body);
       Map<String,dynamic> data =  jsonDecode(response.body);
+      print(data);
       return data;
     } else {
-      throw Exception('error in status code ${response.statusCode} with body${jsonDecode(response.body)}');
+      throw Exception('${AppString.apiError} ${response.statusCode} with body${jsonDecode(response.body)}');
     }
   }
 }

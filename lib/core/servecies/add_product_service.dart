@@ -11,7 +11,7 @@ class AddProduct {
     required String category,
   }) async {
     Map<String, dynamic> data =
-        await HttpHelper().post(url: AddPRODUCT, body: {
+        await HttpHelper().post(url: ApiConstance.AddPRODUCT, body: {
           "title":title,
           "price":price,
           "description":description,

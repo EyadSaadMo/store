@@ -1,9 +1,9 @@
 import 'package:equatable/equatable.dart';
 
 class ProductsModel extends Equatable {
-  final int id;
+  final dynamic id;
   final String title;
-  final double price;
+  final dynamic price;
   final String description;
   final String category;
   final String image;
@@ -36,7 +36,7 @@ class ProductsModel extends Equatable {
 }
 
 class RatingModel extends Equatable{
- final double rate;
+ final dynamic rate;
  final int count;
  const RatingModel({required this.rate,required this.count});
  factory RatingModel.fromJson(json){
